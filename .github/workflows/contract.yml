@@ -1,0 +1,18 @@
+name: contract
+run-name: ${{ inputs.title || github.ref_name }}
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: A title for the run
+        required: false
+        default: ""
+  push:
+    branches: ["ct-*"]
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "JIM's contract run"
